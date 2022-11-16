@@ -35,7 +35,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         file: ./Dockerfile-php81
-        build-args: ["NGINX_UNIT_VER=${{ github.ref_name }}"]
+        build-args: "NGINX_UNIT_VER=${{ github.ref_name }}"
         push: true
         tags: "medic84/php-unit:latest,medic84/php-unit:php8.1-unit${{ github.ref_name }}"
         platforms: linux/amd64,linux/arm64
