@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "master" ]
+    tags: [ "*" ]
 
 jobs:
 
@@ -32,10 +32,11 @@ jobs:
 
     -
       name: Build and push
-      if: success() && github.event_name != 'pull_request'
       uses: docker/build-push-action@v3
       with:
-        context: .
+        file: ./Dockerfile-php81
+        build-args:
+          - NGINX_UNIT_VER=${{ github.ref_name }}
         push: true
-        tags: medic84/php-unit:latest
+        tags: medic84/php-unit:latest,medic84/php-unit:php8.1-unit${{ github.ref_name }}
         platforms: linux/amd64,linux/arm64
