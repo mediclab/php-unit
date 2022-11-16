@@ -36,7 +36,7 @@ jobs:
       with:
         file: ./Dockerfile-php80
         build-args:
-          - NGINX_UNIT_VER=${{ github.ref_name }}
+          - "NGINX_UNIT_VER=${{ github.ref_name }}"
         push: true
-        tags: medic84/php-unit:php8.0,medic84/php-unit:php8.0-unit${{ github.ref_name }}
+        tags: "medic84/php-unit:php8.0,medic84/php-unit:php8.0-unit${{ github.ref_name }}"
         platforms: linux/amd64,linux/arm64
